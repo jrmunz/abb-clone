@@ -1,5 +1,5 @@
 {
-  "name": "gql-typescript-server",
+  "name": "@abb/server",
   "license": "MIT",
   "version": "0.0.1",
   "description": "Awesome project developed with TypeORM.",
