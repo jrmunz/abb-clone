@@ -16,6 +16,7 @@ export const validUserSchema = yup.object().shape({
   email: yup
     .string()
     .min(3, messages.register.emailNotLongEnough)
-    .email(messages.register.invalidEmail),
+    .email(messages.register.invalidEmail)
+    .required(),
   password: passwordShape,
 });

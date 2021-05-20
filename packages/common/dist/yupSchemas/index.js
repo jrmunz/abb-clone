@@ -34,7 +34,8 @@ exports.validUserSchema = yup.object().shape({
     email: yup
         .string()
         .min(3, lang_1.messages.register.emailNotLongEnough)
-        .email(lang_1.messages.register.invalidEmail),
+        .email(lang_1.messages.register.invalidEmail)
+        .required(),
     password: passwordShape,
 });
 //# sourceMappingURL=index.js.map
