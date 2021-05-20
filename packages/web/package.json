@@ -2,8 +2,15 @@
   "name": "@abb/web",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@abb/common": "1.0.0",
+    "@abb/controller": "1.0.0",
     "@apollo/client": "^3.3.19",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -23,11 +30,9 @@
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@types/react-router-dom": "^5.1.7",
+    "@types/yup": "^0.29.11"
   },
   "eslintConfig": {
     "extends": [
@@ -46,9 +51,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/react-router-dom": "^5.1.7",
-    "@types/yup": "^0.29.11"
   }
 }
