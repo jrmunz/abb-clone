@@ -1,9 +1,8 @@
+import { messages, newPasswordSchema, validUserSchema } from "@abb/common";
 import bcrypt from "bcryptjs";
 
 import { createVerifyEmailLink } from "../../utils/createVerifyEmailLink";
 import { formatYupError } from "../../utils/formatYupError";
-import { messages } from "../../lang";
-import { passwordSchema, registrationSchema } from "../../validations";
 import { Resolvers } from "../../types/schema";
 import { User } from "../../entity/User";
 import { sendConfirmationEmail } from "../../utils/sendEmail";
@@ -30,7 +29,7 @@ export const authResolver: Resolvers = {
       }
 
       try {
-        await passwordSchema.validate({ newPassword }, { abortEarly: false });
+        await newPasswordSchema.validate({ newPassword }, { abortEarly: false });
       } catch (err) {
         return formatYupError(err);
       }
@@ -96,7 +95,7 @@ export const authResolver: Resolvers = {
     },
     register: async (_, args, { redis, url }) => {
       try {
-        await registrationSchema.validate(args, { abortEarly: false });
+        await validUserSchema.validate(args, { abortEarly: false });
       } catch (err) {
         return formatYupError(err);
       }

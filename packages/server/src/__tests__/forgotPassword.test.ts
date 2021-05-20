@@ -1,9 +1,9 @@
 import { Connection } from "typeorm";
+import { messages } from "@abb/common";
 
 import { createForgotPasswordLink } from "../utils/createForgotPwdLink";
 import { createTOConnection } from "../utils/createTOConnection";
 import { forgotPwdLockAcct } from "../utils/forgotPwdLockAcct";
-import { messages } from "../lang";
 import { redis } from "../utils/redisConfig";
 import { TestClient } from "../utils/TestClient";
 import { User } from "../entity/User";

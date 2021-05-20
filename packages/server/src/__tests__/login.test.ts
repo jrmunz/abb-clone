@@ -1,7 +1,7 @@
 import { Connection } from "typeorm";
+import { messages } from "@abb/common";
 
 import { createTOConnection } from "../utils/createTOConnection";
-import { messages } from "../lang";
 import { TestClient } from "../utils/TestClient";
 import { User } from "../entity/User";
 

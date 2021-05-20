@@ -1,11 +1,12 @@
 import { Form, Input, Checkbox, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { withFormik, FormikErrors, FormikProps } from "formik";
-import * as yup from "yup";
+import { validUserSchema as validationSchema } from "@abb/common";
 
 interface FormValues {
   email: string;
   password: string;
+  remember: boolean;
 }
 
 interface RVProps {
@@ -22,9 +23,8 @@ export const Register = (props: FormikProps<FormValues> & RVProps) => {
     >
       <div style={{ width: 400 }}>
         <Form.Item
-          name="email"
-          help={touched.email && errors.email ? errors.email : ""}
           validateStatus={touched.email && errors.email ? "error" : "success"}
+          help={touched.email && errors.email ? errors.email : ""}
         >
           <Input
             name="email"
@@ -36,9 +36,8 @@ export const Register = (props: FormikProps<FormValues> & RVProps) => {
           />
         </Form.Item>
         <Form.Item
-          name="password"
-          help={touched.password && errors.password ? errors.password : ""}
           validateStatus={touched.password && errors.password ? "error" : "success"}
+          help={touched.password && errors.password ? errors.password : ""}
         >
           <Input
             name="password"
@@ -51,8 +50,15 @@ export const Register = (props: FormikProps<FormValues> & RVProps) => {
           />
         </Form.Item>
         <Form.Item>
-          <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Remember me</Checkbox>
+          <Form.Item valuePropName="checked" noStyle>
+            <Checkbox
+              name="remember"
+              value={values.remember}
+              checked={values.remember}
+              onChange={handleChange}
+            >
+              Remember me
+            </Checkbox>
           </Form.Item>
 
           <a className="login-form-forgot" href="#t">
@@ -74,26 +80,9 @@ export const Register = (props: FormikProps<FormValues> & RVProps) => {
   );
 };
 
-const messages = {
-  register: {
-    emailNotLongEnough: "Email must be at least 3 characters",
-    invalidEmail: "Email enter is not a valid email",
-    passwordNotLongEnough: "Password must be at least 3 characters",
-  },
-};
-
-const validationSchema = yup.object().shape({
-  email: yup
-    .string()
-    .min(3, messages.register.emailNotLongEnough)
-    .email(messages.register.invalidEmail)
-    .required(),
-  password: yup.string().min(3, messages.register.passwordNotLongEnough).max(255).required(),
-});
-
 export const RegisterView = withFormik<RVProps, FormValues>({
   validationSchema,
-  mapPropsToValues: () => ({ email: "", password: "" }),
+  mapPropsToValues: () => ({ email: "", password: "", remember: false }),
   handleSubmit: async (values, { props, setErrors }) => {
     const errors = await props.submit(values);
     if (errors) {

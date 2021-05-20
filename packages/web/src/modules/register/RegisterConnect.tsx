@@ -6,9 +6,5 @@ export const RegisterConnect = () => {
     return null;
   };
 
-  return (
-    <>
-      <RegisterView submit={testSubmit} />
-    </>
-  );
+  return <RegisterView submit={testSubmit} />;
 };
