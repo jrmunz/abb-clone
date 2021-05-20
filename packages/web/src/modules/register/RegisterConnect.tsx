@@ -1,10 +1,12 @@
 import { RegisterView } from "./view/RegisterView";
+import { RegisterController } from "@abb/controller";
 
 export const RegisterConnect = () => {
-  const testSubmit = async (values: any) => {
-    console.log(values);
-    return null;
-  };
-
-  return <RegisterView submit={testSubmit} />;
+  return (
+    <>
+      <RegisterController>
+        {({ submit, loading }) => <RegisterView submit={submit} loading={loading} />}
+      </RegisterController>
+    </>
+  );
 };
