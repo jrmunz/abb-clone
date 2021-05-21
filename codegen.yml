@@ -1,0 +1,18 @@
+overwrite: true
+schema: "http://localhost:4000/graphql"
+documents: null
+generates:
+  packages/server/src/types/schema.d.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+  packages/controller/src/types/graphql.d.ts:
+    documents:
+      - "packages/controller/src/modules/**/*.tsx"
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      skipTypename: true
+      withRefetchFn: true

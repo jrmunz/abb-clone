@@ -1,18 +1,22 @@
-import { gql, useMutation } from "@apollo/client";
+import { gql } from "@apollo/client";
+import {
+  useRegisterMutation,
+  RegisterMutationVariables,
+  RegisterMutation,
+} from "../../types/graphql";
 
 interface RCProps {
   children: (data: {
-    submit: (values: any) => Promise<null>;
+    submit: (values: RegisterMutationVariables) => Promise<null>;
     loading: boolean;
-    data: any;
+    data: RegisterMutation;
   }) => JSX.Element | null;
 }
-type OperationVariables = { email: string; password: string };
 
 export const RegisterController = (props: RCProps) => {
-  const [registerUser, { data, loading }] = useMutation<any, OperationVariables>(RegisterMutation);
+  const [registerUser, { data, loading }] = useRegisterMutation();
 
-  const submit = async (values: any) => {
+  const submit = async (values: RegisterMutationVariables) => {
     console.log(values);
     await registerUser({ variables: values });
     return null;
@@ -22,7 +26,7 @@ export const RegisterController = (props: RCProps) => {
 };
 
 const RegisterMutation = gql`
-  mutation register($email: String!, $password: String!) {
+  mutation Register($email: String!, $password: String!) {
     register(email: $email, password: $password) {
       path
       message

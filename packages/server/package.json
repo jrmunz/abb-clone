@@ -5,10 +5,6 @@
   "description": "Awesome project developed with TypeORM.",
   "devDependencies": {
     "@abb/common": "1.0.0",
-    "@graphql-codegen/cli": "1.21.4",
-    "@graphql-codegen/typescript": "1.22.0",
-    "@graphql-codegen/typescript-document-nodes": "1.17.11",
-    "@graphql-codegen/typescript-resolvers": "1.19.1",
     "@types/bcryptjs": "^2.4.2",
     "@types/connect-redis": "^0.0.16",
     "@types/express-session": "^1.17.3",
@@ -48,7 +44,6 @@
   },
   "scripts": {
     "test": "NODE_ENV=test jest --watch --runInBand",
-    "start": "NODE_ENV=development tsnd --respawn src/index.ts",
-    "gen-schema": "graphql-codegen --config codegen.yml"
+    "start": "NODE_ENV=development tsnd --respawn src/index.ts"
   }
 }
