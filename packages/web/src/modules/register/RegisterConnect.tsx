@@ -5,7 +5,7 @@ export const RegisterConnect = () => {
   return (
     <>
       <RegisterController>
-        {({ submit, loading }) => <RegisterView submit={submit} loading={loading} />}
+        {({ loading, submit }) => <RegisterView submit={submit} loading={loading} />}
       </RegisterController>
     </>
   );
