@@ -1,16 +1,15 @@
 import { gql } from "@apollo/client";
-import { MutationRegisterArgs, RegisterMutation, useRegisterMutation } from "../../types/graphql";
+import { MutationRegisterArgs, useRegisterMutation } from "../../types/graphql";
 
 interface RCProps {
   children: (data: {
-    data: RegisterMutation;
     loading: boolean;
     submit: (values: MutationRegisterArgs) => Promise<null>;
   }) => JSX.Element;
 }
 
 export const RegisterController = (props: RCProps) => {
-  const [registerUser, { loading, data }] = useRegisterMutation();
+  const [registerUser, { loading }] = useRegisterMutation();
 
   const submit = async (values: MutationRegisterArgs) => {
     console.log(values);
@@ -18,10 +17,10 @@ export const RegisterController = (props: RCProps) => {
     return null;
   };
 
-  return props.children({ data, loading, submit });
+  return props.children({ loading, submit });
 };
 
-const RegisterMutation = gql`
+export const RegisterMutation = gql`
   mutation Register($email: String!, $password: String!) {
     register(email: $email, password: $password) {
       path

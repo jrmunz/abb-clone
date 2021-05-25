@@ -1,10 +1,10 @@
-/// <reference types="react" />
+import { MutationRegisterArgs } from "../../types/graphql";
 interface RCProps {
     children: (data: {
-        submit: (values: any) => Promise<null>;
         loading: boolean;
-        data: any;
-    }) => JSX.Element | null;
+        submit: (values: MutationRegisterArgs) => Promise<null>;
+    }) => JSX.Element;
 }
-export declare const RegisterController: (props: RCProps) => JSX.Element | null;
+export declare const RegisterController: (props: RCProps) => JSX.Element;
+export declare const RegisterMutation: import("@apollo/client").DocumentNode;
 export {};

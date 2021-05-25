@@ -38,9 +38,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { gql, useMutation } from "@apollo/client";
+import { gql } from "@apollo/client";
+import { useRegisterMutation } from "../../types/graphql";
 export var RegisterController = function (props) {
-    var _a = useMutation(RegisterMutation), registerUser = _a[0], _b = _a[1], data = _b.data, loading = _b.loading;
+    var _a = useRegisterMutation(), registerUser = _a[0], loading = _a[1].loading;
     var submit = function (values) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -53,8 +54,8 @@ export var RegisterController = function (props) {
             }
         });
     }); };
-    return props.children({ submit: submit, loading: loading, data: data });
+    return props.children({ loading: loading, submit: submit });
 };
-var RegisterMutation = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  mutation register($email: String!, $password: String!) {\n    register(email: $email, password: $password) {\n      path\n      message\n    }\n  }\n"], ["\n  mutation register($email: String!, $password: String!) {\n    register(email: $email, password: $password) {\n      path\n      message\n    }\n  }\n"])));
+export var RegisterMutation = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  mutation Register($email: String!, $password: String!) {\n    register(email: $email, password: $password) {\n      path\n      message\n    }\n  }\n"], ["\n  mutation Register($email: String!, $password: String!) {\n    register(email: $email, password: $password) {\n      path\n      message\n    }\n  }\n"])));
 var templateObject_1;
 //# sourceMappingURL=index.js.map
