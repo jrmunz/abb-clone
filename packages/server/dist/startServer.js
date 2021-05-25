@@ -33,6 +33,7 @@ const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
             redis: redisConfig_1.redis,
             url: req.protocol + "://" + req.get("host"),
         }),
+        playground: true,
     });
     const connection = yield createTOConnection_1.createTOConnection();
     yield server.start();

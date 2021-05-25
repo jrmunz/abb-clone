@@ -22,6 +22,8 @@ const RedisStore = connectRedis(session);
 export const startServer = async () => {
   const server = new ApolloServer({
     schema: schemaWithMiddleware,
+    playground: true,
+    introspection: true,
     context: ({ req }) => ({
       req: req,
       redis,

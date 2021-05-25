@@ -2,9 +2,8 @@ import { createConnection, getConnectionOptions } from "typeorm";
 
 export const createTOConnection = async () => {
   const connectionOptions = await getConnectionOptions(process.env.NODE_ENV);
-  const isProduction = process.env.NODE_ENV === "production";
 
-  return isProduction
+  return process.env.NODE_ENV === "production"
     ? createConnection({
         ...connectionOptions,
         url: process.env.DATABASE_URL,

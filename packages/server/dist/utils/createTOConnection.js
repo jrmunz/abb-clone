@@ -13,8 +13,7 @@ exports.createTOConnection = void 0;
 const typeorm_1 = require("typeorm");
 const createTOConnection = () => __awaiter(void 0, void 0, void 0, function* () {
     const connectionOptions = yield typeorm_1.getConnectionOptions(process.env.NODE_ENV);
-    const isProduction = process.env.NODE_ENV === "production";
-    return isProduction
+    return process.env.NODE_ENV === "production"
         ? typeorm_1.createConnection(Object.assign(Object.assign({}, connectionOptions), { url: process.env.DATABASE_URL, name: "default" }))
         : typeorm_1.createConnection(Object.assign(Object.assign({}, connectionOptions), { name: "default" }));
 });
