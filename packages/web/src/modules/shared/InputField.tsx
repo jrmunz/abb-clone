@@ -6,7 +6,9 @@ type IFProps = FieldProps<any> & { prefix: React.ReactNode };
 export const InputField = ({ field, form: { touched, errors }, ...props }: IFProps) => {
   const error = touched[field.name] && errors[field.name];
 
-  <Form.Item validateStatus={error ? "error" : "success"} help={error}>
-    <Input {...field} {...props} />
-  </Form.Item>;
+  return (
+    <Form.Item validateStatus={error ? "error" : "success"} help={error}>
+      <Input {...field} {...props} />
+    </Form.Item>
+  );
 };
