@@ -1,5 +1,5 @@
-import { GraphQLResolveInfo } from 'graphql';
 import { Redis } from 'ioredis';
+import { GraphQLResolveInfo } from 'graphql';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
@@ -15,13 +15,11 @@ export type Scalars = {
 };
 
 export type Error = {
-  __typename?: 'Error';
   path: Scalars['String'];
   message: Scalars['String'];
 };
 
 export type Mutation = {
-  __typename?: 'Mutation';
   changeForgottenPassword?: Maybe<Array<Error>>;
   logout?: Maybe<Scalars['Boolean']>;
   login?: Maybe<Array<Error>>;
@@ -30,41 +28,39 @@ export type Mutation = {
 };
 
 
-export type MutationChangeForgottenPasswordArgs = {
+export type Mutation_ChangeForgottenPasswordArgs = {
   newPassword: Scalars['String'];
   key: Scalars['String'];
 };
 
 
-export type MutationLoginArgs = {
+export type Mutation_LoginArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
 };
 
 
-export type MutationRegisterArgs = {
+export type Mutation_RegisterArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
 };
 
 
-export type MutationSendForgotPasswordEmailArgs = {
+export type Mutation_SendForgotPasswordEmailArgs = {
   email: Scalars['String'];
 };
 
 export type Query = {
-  __typename?: 'Query';
   user?: Maybe<User>;
   hello: Scalars['String'];
 };
 
 
-export type QueryHelloArgs = {
+export type Query_HelloArgs = {
   name?: Maybe<Scalars['String']>;
 };
 
 export type User = {
-  __typename?: 'User';
   id: Scalars['ID'];
   email: Scalars['String'];
 };
@@ -167,32 +163,32 @@ export type ResolversParentTypes = {
   ID: Scalars['ID'];
 };
 
-export type ErrorResolvers<ContextType = any, ParentType extends ResolversParentTypes['Error'] = ResolversParentTypes['Error']> = {
+export type ErrorResolvers<ContextType = { redis: Redis, req: Express.Request, url: string }, ParentType extends ResolversParentTypes['Error'] = ResolversParentTypes['Error']> = {
   path?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  changeForgottenPassword?: Resolver<Maybe<Array<ResolversTypes['Error']>>, ParentType, ContextType, RequireFields<MutationChangeForgottenPasswordArgs, 'newPassword' | 'key'>>;
+export type MutationResolvers<ContextType = { redis: Redis, req: Express.Request, url: string }, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  changeForgottenPassword?: Resolver<Maybe<Array<ResolversTypes['Error']>>, ParentType, ContextType, RequireFields<Mutation_ChangeForgottenPasswordArgs, 'newPassword' | 'key'>>;
   logout?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
-  login?: Resolver<Maybe<Array<ResolversTypes['Error']>>, ParentType, ContextType, RequireFields<MutationLoginArgs, 'email' | 'password'>>;
-  register?: Resolver<Maybe<Array<ResolversTypes['Error']>>, ParentType, ContextType, RequireFields<MutationRegisterArgs, 'email' | 'password'>>;
-  sendForgotPasswordEmail?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType, RequireFields<MutationSendForgotPasswordEmailArgs, 'email'>>;
+  login?: Resolver<Maybe<Array<ResolversTypes['Error']>>, ParentType, ContextType, RequireFields<Mutation_LoginArgs, 'email' | 'password'>>;
+  register?: Resolver<Maybe<Array<ResolversTypes['Error']>>, ParentType, ContextType, RequireFields<Mutation_RegisterArgs, 'email' | 'password'>>;
+  sendForgotPasswordEmail?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType, RequireFields<Mutation_SendForgotPasswordEmailArgs, 'email'>>;
 };
 
-export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+export type QueryResolvers<ContextType = { redis: Redis, req: Express.Request, url: string }, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
-  hello?: Resolver<ResolversTypes['String'], ParentType, ContextType, RequireFields<QueryHelloArgs, never>>;
+  hello?: Resolver<ResolversTypes['String'], ParentType, ContextType, RequireFields<Query_HelloArgs, never>>;
 };
 
-export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
+export type UserResolvers<ContextType = { redis: Redis, req: Express.Request, url: string }, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Resolvers<ContextType = {redis: Redis, req: Express.Request, url: string}> = {
+export type Resolvers<ContextType = { redis: Redis, req: Express.Request, url: string }> = {
   Error?: ErrorResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
@@ -204,4 +200,4 @@ export type Resolvers<ContextType = {redis: Redis, req: Express.Request, url: st
  * @deprecated
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
  */
-export type IResolvers<ContextType = any> = Resolvers<ContextType>;
+export type IResolvers<ContextType = { redis: Redis, req: Express.Request, url: string }> = Resolvers<ContextType>;
