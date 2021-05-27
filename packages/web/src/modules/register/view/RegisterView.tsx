@@ -19,39 +19,39 @@ export const Register = (props: FormikProps<FormValues> & RVProps) => {
   const { Form: AntForm, Button } = Antd;
 
   return (
-    <Form style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-      <div style={{ width: 400 }}>
+    <Form
+      style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}
+    >
+      <div style={{ width: 400, padding: "15px", display: "flex", flexDirection: "column" }}>
         <Field
           name="email"
-          prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder="Email"
           component={InputField}
+          prefix={<UserOutlined className="site-form-item-icon" />}
         />
         <Field
           name="password"
-          prefix={<LockOutlined className="site-form-item-icon" />}
           placeholder="Password"
           component={InputField}
+          prefix={<LockOutlined className="site-form-item-icon" />}
         />
-        <AntForm.Item>
-          <a className="login-form-forgot" href="#t">
+        <AntForm.Item style={{ alignSelf: "flex-end" }}>
+          <a className="login-form-forgot" href="#_">
             Forgot password
           </a>
         </AntForm.Item>
-
-        <AntForm.Item>
+        <AntForm.Item style={{ alignSelf: "center" }}>
           <Button
             type="primary"
-            loading={props.loading}
             htmlType="submit"
+            loading={props.loading}
             className="login-form-button"
           >
             Register
           </Button>
         </AntForm.Item>
-
-        <AntForm.Item>
-          Or <a href="#t">Login now!</a>
+        <AntForm.Item style={{ alignSelf: "center" }}>
+          Or <a href="#_">Log in</a>
         </AntForm.Item>
       </div>
     </Form>
