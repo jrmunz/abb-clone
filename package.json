@@ -6,12 +6,10 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/expo",
-      "**/expo/**",
-      "**/expo-status-bar",
-      "**/expo-status-bar/**",
-      "**/react-native",
-      "**/react-native/**"
+      "**/@apollo",
+      "**/@apollo/**",
+      "**/react-router",
+      "**/react-router/**"
     ]
   },
   "devDependencies": {
