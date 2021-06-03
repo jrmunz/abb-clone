@@ -1,18 +1,12 @@
 import React from "react";
-import { View } from "react-native";
-import { Text, Button } from "react-native-elements";
+import { RegisterController } from "@abb/controller";
+
+import { RegisterView } from "./view/RegisterView";
 
 export const RegisterConnect = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Register New Account</Text>
-      <Button title="Register" style={{ width: 200, marginTop: 15 }} />
-    </View>
+    <RegisterController>
+      {({ loading, submit }) => <RegisterView submit={submit} loading={loading} />}
+    </RegisterController>
   );
 };
