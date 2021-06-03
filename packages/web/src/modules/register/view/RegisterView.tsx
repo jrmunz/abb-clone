@@ -2,6 +2,7 @@ import React from "react";
 import { withFormik, Form, Field, FormikErrors } from "formik";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { registrationSchema as validationSchema } from "@abb/common";
+import { Link } from "react-router-dom";
 import * as Antd from "antd";
 
 import { InputField } from "../../shared/InputField";
@@ -47,12 +48,13 @@ export const Register = (props: RVProps) => {
             htmlType="submit"
             loading={props.loading}
             className="login-form-button"
+            style={{ minWidth: 180 }}
           >
             Register
           </Button>
         </AntdForm.Item>
         <AntdForm.Item style={{ alignSelf: "center" }}>
-          Or <a href="#-">Login</a>
+          Or <Link to="/login">Login</Link>
         </AntdForm.Item>
       </div>
     </Form>
@@ -62,10 +64,12 @@ export const Register = (props: RVProps) => {
 export const RegisterView = withFormik<RVProps, FormValues>({
   validationSchema,
   mapPropsToValues: () => ({ email: "", password: "" }),
-  handleSubmit: async (values, { props, setErrors }) => {
+  handleSubmit: async (values, { props, setErrors, resetForm }) => {
     const errors = await props.submit(values);
     if (errors) {
       setErrors(errors);
+    } else {
+      resetForm();
     }
   },
 })(Register);
