@@ -15,13 +15,11 @@ export type Scalars = {
 };
 
 export type Error = {
-  __typename?: 'Error';
   path: Scalars['String'];
   message: Scalars['String'];
 };
 
 export type Mutation = {
-  __typename?: 'Mutation';
   changeForgottenPassword?: Maybe<Array<Error>>;
   logout?: Maybe<Scalars['Boolean']>;
   login?: Maybe<Array<Error>>;
@@ -53,7 +51,6 @@ export type MutationSendForgotPasswordEmailArgs = {
 };
 
 export type Query = {
-  __typename?: 'Query';
   user?: Maybe<User>;
   hello: Scalars['String'];
 };
@@ -64,7 +61,6 @@ export type QueryHelloArgs = {
 };
 
 export type User = {
-  __typename?: 'User';
   id: Scalars['ID'];
   email: Scalars['String'];
 };
