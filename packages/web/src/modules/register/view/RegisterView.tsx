@@ -1,6 +1,7 @@
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { withFormik, FormikErrors, FormikProps, Field, Form } from "formik";
-import { validUserSchema as validationSchema } from "@abb/common";
+import React from "react";
+import { withFormik, Form, Field, FormikErrors } from "formik";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { registrationSchema as validationSchema } from "@abb/common";
 import * as Antd from "antd";
 
 import { InputField } from "../../shared/InputField";
@@ -15,32 +16,32 @@ interface RVProps {
   submit: (values: FormValues) => Promise<FormikErrors<FormValues> | null>;
 }
 
-export const Register = (props: FormikProps<FormValues> & RVProps) => {
-  const { Form: AntForm, Button } = Antd;
+export const Register = (props: RVProps) => {
+  const { Form: AntdForm, Button } = Antd;
 
   return (
-    <Form
-      style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}
-    >
-      <div style={{ width: 400, padding: "15px", display: "flex", flexDirection: "column" }}>
+    <Form style={{ display: "flex", justifyContent: "center", width: "100vw", height: "100vh" }}>
+      <div style={{ display: "flex", flexDirection: "column", width: 400, marginTop: 100 }}>
         <Field
+          type="email"
           name="email"
           placeholder="Email"
           component={InputField}
           prefix={<UserOutlined className="site-form-item-icon" />}
         />
         <Field
+          type="password"
           name="password"
           placeholder="Password"
           component={InputField}
           prefix={<LockOutlined className="site-form-item-icon" />}
         />
-        <AntForm.Item style={{ alignSelf: "flex-end" }}>
-          <a className="login-form-forgot" href="#_">
+        <AntdForm.Item style={{ alignSelf: "flex-end" }}>
+          <a className="login-form-forgot" href="#-">
             Forgot password
           </a>
-        </AntForm.Item>
-        <AntForm.Item style={{ alignSelf: "center" }}>
+        </AntdForm.Item>
+        <AntdForm.Item style={{ alignSelf: "center" }}>
           <Button
             type="primary"
             htmlType="submit"
@@ -49,10 +50,10 @@ export const Register = (props: FormikProps<FormValues> & RVProps) => {
           >
             Register
           </Button>
-        </AntForm.Item>
-        <AntForm.Item style={{ alignSelf: "center" }}>
-          Or <a href="#_">Log in</a>
-        </AntForm.Item>
+        </AntdForm.Item>
+        <AntdForm.Item style={{ alignSelf: "center" }}>
+          Or <a href="#-">Login</a>
+        </AntdForm.Item>
       </div>
     </Form>
   );
@@ -60,7 +61,7 @@ export const Register = (props: FormikProps<FormValues> & RVProps) => {
 
 export const RegisterView = withFormik<RVProps, FormValues>({
   validationSchema,
-  mapPropsToValues: () => ({ email: "", password: "", remember: false }),
+  mapPropsToValues: () => ({ email: "", password: "" }),
   handleSubmit: async (values, { props, setErrors }) => {
     const errors = await props.submit(values);
     if (errors) {

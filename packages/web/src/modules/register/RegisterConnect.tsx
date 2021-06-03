@@ -1,5 +1,7 @@
-import { RegisterView } from "./view/RegisterView";
+import React from "react";
 import { RegisterController } from "@abb/controller";
+
+import { RegisterView } from "./view/RegisterView";
 
 export const RegisterConnect = () => {
   return (
