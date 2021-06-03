@@ -20,3 +20,16 @@ export const registrationSchema = yup.object().shape({
     .required(),
   password: passwordShape,
 });
+
+export const loginSchema = yup.object().shape({
+  email: yup
+    .string()
+    .min(3, messages.login.invalidCridentials)
+    .email(messages.login.invalidCridentials)
+    .required(),
+  password: yup
+    .string()
+    .min(3, messages.login.invalidCridentials)
+    .max(255, messages.login.invalidCridentials)
+    .required(),
+});
