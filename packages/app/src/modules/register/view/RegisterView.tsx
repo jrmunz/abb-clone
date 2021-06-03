@@ -29,13 +29,20 @@ export const Register = (props: FormikProps<any> & RVProps) => {
         alignItems: "center",
       }}
     >
-      <Field type="email" name="email" placeholder="Email" component={InputField} />
+      <Field
+        type="email"
+        name="email"
+        placeholder="Email"
+        component={InputField}
+        autoCapitalize="none"
+      />
       <Field
         type="password"
         secureTextEntry={true}
         name="password"
         placeholder="Password"
         component={InputField}
+        autoCapitalize="none"
       />
       <Button style={{ marginTop: 50, width: 120 }} onPress={props.handleSubmit} title="Register" />
     </View>
