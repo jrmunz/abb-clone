@@ -1,5 +1,5 @@
-import { messages, newPasswordSchema, validUserSchema } from "@abb/common";
 import bcrypt from "bcryptjs";
+import { messages, registrationSchema, newPasswordSchema } from "@abb/common";
 
 import { createVerifyEmailLink } from "../../utils/createVerifyEmailLink";
 import { formatYupError } from "../../utils/formatYupError";
@@ -95,7 +95,7 @@ export const authResolver: Resolvers = {
     },
     register: async (_, args, { redis, url }) => {
       try {
-        await validUserSchema.validate(args, { abortEarly: false });
+        await registrationSchema.validate(args, { abortEarly: false });
       } catch (err) {
         return formatYupError(err);
       }

@@ -18,8 +18,4 @@ router.get("/confirm/:id", async (req, res) => {
   }
 });
 
-router.get("/", (_, res) => {
-  res.send("Hello Universe");
-});
-
 export default router;

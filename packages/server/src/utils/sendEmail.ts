@@ -1,5 +1,5 @@
-import { messages } from "@abb/common";
 import sgMail from "@sendgrid/mail";
+import { messages } from "@abb/common";
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
