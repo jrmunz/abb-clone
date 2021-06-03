@@ -2,24 +2,20 @@ overwrite: true
 schema: http://localhost:4000/graphql
 documents: null
 generates:
-  ./packages/server/src/types/schema.d.ts:
+  packages/server/src/types/schema.d.ts:
     plugins:
       - add:
           content: "import { Redis } from 'ioredis';"
       - typescript
       - typescript-resolvers
-      - typescript-operations
     config:
       contextType: "{ redis: Redis, req: Express.Request, url: string }"
       skipTypename: true
-      addUnderscoreToArgsType: true
-  ./packages/controller/src/types/graphql.ts:
-    documents:
-      - "./packages/controller/src/modules/**/*.tsx"
+  packages/controller/src/types/graphql.ts:
+    documents: "packages/controller/src/modules/**/*.tsx"
     plugins:
       - typescript
       - typescript-operations
       - typescript-react-apollo
     config:
       skipTypename: true
-      withRefetchFn: true

@@ -12,7 +12,7 @@ export const newPasswordSchema = yup.object().shape({
   newPassword: passwordShape,
 });
 
-export const validUserSchema = yup.object().shape({
+export const registrationSchema = yup.object().shape({
   email: yup
     .string()
     .min(3, messages.register.emailNotLongEnough)

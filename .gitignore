@@ -1,27 +1,17 @@
 node_modules/
 build/
+dist/
 tmp/
 temp/
-dist/
-
-.idea/
-.vscode/
-.DS_Store
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-.expo/
 
 # testing
 /coverage
 
-# production
-/dist
-/build
-
-# misc
+.pnp/
+.idea/
+.vscode/
+.expo/
+.pnp.js
 .DS_Store
 
 # environment
