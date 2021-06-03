@@ -8,7 +8,7 @@ interface RCProps {
   }) => JSX.Element;
 }
 
-export function RegisterController(props: RCProps) {
+export const RegisterController = (props: RCProps) => {
   const [newRegistration, { loading }] = useRegisterMutation();
 
   const onSubmit = async (values: MutationRegisterArgs) => {
@@ -22,7 +22,7 @@ export function RegisterController(props: RCProps) {
   };
 
   return props.children({ loading, submit: onSubmit });
-}
+};
 
 export const RegisterMutation = gql`
   mutation Register($email: String!, $password: String!) {
